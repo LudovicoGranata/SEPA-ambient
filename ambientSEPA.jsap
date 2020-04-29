@@ -1,0 +1,67 @@
+{
+	"host": "mml.arces.unibo.it",
+	"oauth": {
+		"enable": false,
+		"register": "https://localhost:8443/oauth/register",
+		"tokenRequest": "https://localhost:8443/oauth/token"
+	},
+	"sparql11protocol": {
+		"protocol": "http",
+		"port": 8666,
+		"query": {
+			"path": "/query",
+			"method": "POST",
+			"format": "JSON"
+		},
+		"update": {
+			"path": "/update",
+			"method": "POST",
+			"format": "JSON"
+		}
+	},
+	"sparql11seprotocol": {
+		"protocol": "ws",
+		"availableProtocols": {
+			"ws": {
+				"port": 9666,
+				"path": "/subscribe"
+			},
+			"wss": {
+				"port": 9443,
+				"path": "/secure/subscribe"
+			}
+		}
+	},
+	 "namespaces": {
+	  "schema": "http://schema.org/",
+	  "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+	  "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+	  "sosa": "http://www.w3.org/ns/sosa/",
+	  "qudt": "http://qudt.org/schema/qudt#",
+	  "unit": "http://qudt.org/vocab/unit#",
+	  "covid19": "http://covid19#",
+	  "time": "http://www.w3.org/2006/time#",
+	  "wgs84_pos": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+	  "gn": "http://www.geonames.org/ontology#"
+  },
+    "updates": {
+  	  		"ADD_OBSERVABLE_PROPERTY": {
+			"sparql": "INSERT DATA {GRAPH <http://airQuality/context> {?property rdf:type sosa:ObservableProperty ; rdfs:label ?label}}"
+	},
+	"ADD_OBSERVATION": {
+			"sparql": "INSERT {GRAPH ?graph {_:obs rdf:type sosa:Observation ; sosa:hasFeatureOfInterest ?place ; sosa:resultTime ?timestamp ; sosa:hasResult _:res ; sosa:observedProperty ?property . _:res rdf:type qudt:QuantityValue ; qudt:unit ?unit ; qudt:numericValue ?value}} WHERE {}"
+			},
+	"DELETE":{
+	"sparql": "WITH <http://airQuality/observation> DELETE { ?s ?p ?o } WHERE { ?s ?p ?o } "
+	}
+  },
+	
+		"queries": {
+
+			"ALL_COORDINATES": {
+				"sparql": "SELECT * WHERE {GRAPH <http://covid19/context> {?nome <http://www.geonames.org/ontology#lat> ?latitudine ; <http://www.geonames.org/ontology#long> ?longitudine; <http://www.geonames.org/ontology#featureCode>	<http://www.geonames.org/ontology#A.ADM2> }}"
+			}
+
+		}
+	
+	}
