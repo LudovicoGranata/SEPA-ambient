@@ -13,10 +13,10 @@ public class AmbientMain {
 		//istanzio oggetto della classe di sostegno ConfigurationProvider		
 		
 		//local
-		ConfigurationProvider conf=new ConfigurationProvider("ambientSEPA_local.jsap");
+		//ConfigurationProvider conf=new ConfigurationProvider("ambientSEPA_local.jsap");
 		
 		//unibo
-		//ConfigurationProvider conf=new ConfigurationProvider("ambientSEPA.jsap");
+		ConfigurationProvider conf=new ConfigurationProvider("ambientSEPA.jsap");
 		
 		//update delle observable properties
 		conf.updateAirProperties();
@@ -47,7 +47,7 @@ public class AmbientMain {
 			//update data
 			conf.updateData(nomeProvincia, ambientREST.getTime(), ambientREST.getAirData(), ambientREST.getDistanceError());	
 			
-			
+			System.out.println ("Update della provincia "+ nomeProvincia +" effettuato con successo");
 			
 		}
 		
