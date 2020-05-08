@@ -47,8 +47,8 @@ public class AmbientMain {
 			//update data
 			conf.updateData(nomeProvincia, ambientREST.getTime(), ambientREST.getAirData(), ambientREST.getDistanceError());	
 			
-			System.out.println ("Update della provincia "+ nomeProvincia +" effettuato con successo");
 			
+			System.out.println ("Update della provincia "+ nomeProvincia +" effettuato con successo");
 		}
 		
 		
